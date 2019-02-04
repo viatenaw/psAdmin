@@ -10,7 +10,7 @@ class AuthorList extends Component {
           <td>
             <Link
               className="list-group-item-action"
-              to="/authors/:id"
+              to={"/authors/".concat(author.id)}
               params={{ id: author.id }}
             >
               {author.id}

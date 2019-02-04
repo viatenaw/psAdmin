@@ -23,13 +23,13 @@ class App extends Component {
               <Route path="/about" component={AboutPage} />
               <Route path="/author" component={AuthorPage} />
               <Route
+                path="/authors/:id"
+                render={props => <ManageAuthorPage {...props} />}
+              />
+              <Route
                 name="addAuthor"
                 path="/authors"
                 component={ManageAuthorPage}
-              />
-              <Route
-                path="/authors/:id"
-                render={props => <ManageAuthorPage {...props} />}
               />
 
               <Route component={ErrorPage} />

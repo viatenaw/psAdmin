@@ -20,7 +20,7 @@ class TextInput extends Component {
             value={this.props.value}
             onChange={this.props.onChange}
           />
-          <div className="input">{this.props.error}</div>
+          <div>{this.props.error}</div>
         </div>
       </div>
     );

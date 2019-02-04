@@ -24,11 +24,12 @@ class ManageAuthorPage extends Component {
     }
   }
   setAuthorState = event => {
-    this.setState({ dirty: true });
     let field = event.target.name;
     let value = event.target.value;
     this.state.author[field] = value;
-    return this.setState({ author: this.state.author });
+    this.setState({ author: this.state.author });
+
+    return this.state.author;
   };
 
   authorFormIsValid = () => {
@@ -61,12 +62,13 @@ class ManageAuthorPage extends Component {
 
   saveAuthor = event => {
     event.preventDefault();
+    this.setState({ dirty: false });
     if (!this.authorFormIsValid()) {
       return;
     }
 
     authorApi.saveAuthor(this.state.author);
-    this.setState({ dirty: false });
+
     toastr.success("Author saved");
     this.props.history.push("/author");
   };
@@ -78,7 +80,6 @@ class ManageAuthorPage extends Component {
             when={this.state.dirty}
             message="You have unsaved changes, are you sure you want to leave?"
           />
-          {/* Component JSX */}
         </React.Fragment>
         <AuthorForm
           author={this.state.author}
